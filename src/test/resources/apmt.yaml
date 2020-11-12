@@ -1,0 +1,10 @@
+apmt-user:
+  username: admin
+  password: ${password}
+instances:
+  author:
+    name: author@local
+    url: ${authorUrl}
+  publish:
+    name: publish@local
+    url: ${publishUrl}
