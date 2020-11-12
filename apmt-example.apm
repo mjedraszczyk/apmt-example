@@ -1,0 +1,47 @@
+# Variable definitions
+DEFINE password "P@SsWorD"
+
+# Users & groups creation
+CREATE-GROUP "global-authors"
+FOR-GROUP "global-authors" BEGIN
+    ALLOW "/" ["READ"]
+    ALLOW "/content/we-retail" ["ALL"]
+END
+
+CREATE-GROUP "en_us-authors"
+FOR-GROUP "en_us-authors" BEGIN
+    ALLOW "/" ["READ"]
+    ALLOW "/content/we-retail/us/en" ["ALL"]
+END
+
+CREATE-GROUP "global-super-authors"
+FOR-GROUP "global-authors" BEGIN
+    ALLOW "/" ["READ"]
+    ALLOW "/content/we-retail" ["ALL"]
+END
+
+CREATE-GROUP "en_us-super-authors"
+FOR-GROUP "en_us-super-authors" BEGIN
+    ALLOW "/" ["READ"]
+    ALLOW "/content/we-retail/us/en" ["ALL"]
+END
+
+CREATE-USER "global-test-author" BEGIN
+    ADD-TO-GROUP "global-authors"
+    SET-PASSWORD $password
+END
+
+CREATE-USER "en_us-test-author" BEGIN
+    ADD-TO-GROUP "en_us-authors"
+    SET-PASSWORD $password
+END
+
+CREATE-USER "global-test-super-author" BEGIN
+    ADD-TO-GROUP "global-super-authors"
+    SET-PASSWORD $password
+END
+
+CREATE-USER "en_us-test-super-author" BEGIN
+    ADD-TO-GROUP "en_us-super-authors"
+    SET-PASSWORD $password
+END
